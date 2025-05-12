@@ -52,3 +52,58 @@ fun RockShopUI() {
         }
     }
 }
+
+@Composable
+fun RockShopUI() {
+    var showInventory by remember { mutableStateOf(true) }
+    var searchQuery by remember { mutableStateOf("") }
+
+    val fullInventory = listOf("Amethyst", "Quartz", "Obsidian", "Jade", "Lapis Lazuli")
+
+    val filteredInventory = fullInventory.filter {
+        it.contains(searchQuery, ignoreCase = true)
+    }
+
+    Scaffold { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "Rock Shop Inventory",
+                fontSize = 24.sp,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                label = { Text("Search rocks...") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            )
+
+            Button(
+                onClick = { showInventory = !showInventory },
+                modifier = Modifier.padding(bottom = 16.dp)
+            ) {
+                Text(if (showInventory) "Hide Inventory" else "Show Inventory")
+            }
+
+            if (showInventory) {
+                LazyColumn {
+                    items(filteredInventory) { item ->
+                        Text(
+                            text = item,
+                            fontSize = 18.sp,
+                            modifier = Modifier.padding(vertical = 4.dp)
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
