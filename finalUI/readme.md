@@ -12,6 +12,10 @@ I feel the users would like to have a seamless experience; everything should fun
 
 For the design, I would like to make the app feel more like a phone experience. While still being on a computer, it will feel comfortable and non-threatening to new users who have more experience with smaller portable devices.
 
+
+
+One thing I noticed during my initial test was that the user was trying to use my paper mock up as a touch screen. So I decided to do my tests with a keyboard and mouse as the software would be used on a computer not a touch screen. See screenshots.
+
 ---
 
 ## Tests / User Stories
